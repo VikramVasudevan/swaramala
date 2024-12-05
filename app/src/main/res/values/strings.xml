@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Swara Mala</string>
+    <string name="sa_lower">Ṣ</string>
+    <string name="ri_lower">R</string>
+    <string name="ga_lower">G</string>
+    <string name="pa_lower">P</string>
+    <string name="dha_lower">D</string>
+    <string name="sa_higher">Ṡ</string>
+    <string name="select_swarams">Select the swarams you need.</string>
+    <string name="next_step">NEXT</string>
+</resources>
