@@ -2,23 +2,23 @@ package com.example.swaramala
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.CompoundButton
 import android.widget.Switch
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.swaramala.databinding.ActivityMainBinding
+import com.example.swaramala.databinding.SelectedSwaramsBinding
 import com.example.swaramala.ui.theme.SwaraMalaTheme
 
 class MainActivity : ComponentActivity() {
+    private lateinit var activityMainBinding: ActivityMainBinding
+    private lateinit var selectedSwaramsBinding: SelectedSwaramsBinding
+
     val selectedSwarams = ArrayList<CharSequence>()
     fun handleSwaramSelection(prmSwitch : Switch , isChecked : Boolean){
         val message = if (isChecked) "${prmSwitch.text}:ON" else "${prmSwitch.text}:OFF"
@@ -27,13 +27,17 @@ class MainActivity : ComponentActivity() {
         if(isChecked) {
             selectedSwarams.add(prmSwitch.text)
         } else {
-
+            selectedSwarams.remove(prmSwitch.text)
         }
+        selectedSwaramsBinding.selectedSwarams.text = "$selectedSwarams"
+        println("Selected Swarams = $selectedSwarams")
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        selectedSwaramsBinding = SelectedSwaramsBinding.inflate(layoutInflater)
 
         val switch1 : Switch = findViewById(R.id.switch1)
         val switch2 : Switch = findViewById(R.id.switch2)

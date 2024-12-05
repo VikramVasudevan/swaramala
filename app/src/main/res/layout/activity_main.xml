@@ -98,6 +98,7 @@
             android:layout_gravity="bottom|center_horizontal"
             />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
+        <include layout="@layout/selected_swarams"/>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>
