@@ -2,6 +2,7 @@ package com.example.swaramala
 
 import android.os.Bundle
 import android.widget.GridView
+import android.widget.ListView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Text
@@ -14,6 +15,7 @@ import com.example.swaramala.ui.theme.SwaraMalaTheme
 
 class MainActivity : ComponentActivity() {
     private lateinit var swaramGrid: GridView
+    private lateinit var selectedSwaramListView : ListView
 
     private lateinit var activityMainBinding: ActivityMainBinding
     /*
@@ -39,6 +41,7 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.activity_main)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         swaramGrid = findViewById(R.id.swaramGrid)
+        selectedSwaramListView = findViewById(R.id.selectedSwaramsList)
         val swaramModelArrayList: ArrayList<SwaramModel> = ArrayList<SwaramModel>()
         swaramModelArrayList.add(SwaramModel("P_LOW", "P_LOW", "p (LOW)"))
         swaramModelArrayList.add(SwaramModel("D_LOW", "D_LOW", "D (LOW)"))
@@ -52,8 +55,9 @@ class MainActivity : ComponentActivity() {
         swaramModelArrayList.add(SwaramModel("G_HIGH", "G_HIGH", "G (HIGH)"))
         swaramModelArrayList.add(SwaramModel("P_HIGH", "P_HIGH", "P (HIGH)"))
 
-        val adapter = SwaramAdapter(this, swaramModelArrayList)
-        swaramGrid.adapter = adapter
+        selectedSwaramListView.adapter = SelectedSwaramAdapter(this, ArrayList<SwaramModel>())
+        swaramGrid.adapter = SwaramAdapter(this, swaramModelArrayList, selectedSwaramListView)
+
 
         // selectedSwaramsBinding = SelectedSwaramsBinding.inflate(layoutInflater)
 
