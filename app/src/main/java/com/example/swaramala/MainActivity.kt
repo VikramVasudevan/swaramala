@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.FragmentActivity
 import com.example.swaramala.databinding.ActivityMainBinding
 import com.example.swaramala.ui.theme.SwaraMalaTheme
+import com.google.gson.Gson
 
 
 class MainActivity : FragmentActivity() {
@@ -85,7 +86,10 @@ class MainActivity : FragmentActivity() {
                 if (fullpattern != null) {
                     extrapolatedSwaramPatternViewModel.setList(fullpattern)
                 }
-                startActivity(Intent(applicationContext, PlaySwaramsActivity::class.java))
+                val intent : Intent = Intent(applicationContext, PlaySwaramsActivity::class.java);
+                var gson = Gson();
+                intent.putExtra("extrapolatedSwaramPatternViewModel", gson.toJson(extrapolatedSwaramPatternViewModel.getList()))
+                startActivity(intent)
                 //TODO call play function
             }
         }

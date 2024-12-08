@@ -1,18 +1,22 @@
 package com.example.swaramala
 
-import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowInsets
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.swaramala.databinding.ActivityPlaySwaramsBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -24,6 +28,8 @@ class PlaySwaramsActivity : AppCompatActivity() {
     private lateinit var fullscreenContent: TextView
     private lateinit var fullscreenContentControls: LinearLayout
     private val hideHandler = Handler(Looper.myLooper()!!)
+
+    val extrapolatedSwaramPatternViewModel: ExtrapolatedSwaramPatternModel by viewModels()
 
     @SuppressLint("InlinedApi")
     private val hidePart2Runnable = Runnable {
@@ -96,6 +102,19 @@ class PlaySwaramsActivity : AppCompatActivity() {
                 startActivity(Intent(applicationContext, MainActivity::class.java))
             }
         })
+        Log.i("PlaySwaramsActivity", "Getting Extras")
+        val b = intent.extras;
+        Log.i("PlaySwaramsActivity", "Extras = $b")
+        if (b != null) {
+            val type = object : TypeToken<List<ArrayList<SwaramModel>>>() {}.type
+
+            extrapolatedSwaramPatternViewModel.setList(
+                Gson().fromJson(b.getString("extrapolatedSwaramPatternViewModel"), type)
+            )
+            Log.i("PlaySwaramsActivity", "extrapolatedSwaramPatternViewModel = ${extrapolatedSwaramPatternViewModel.getList()}")
+
+        }
+
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
