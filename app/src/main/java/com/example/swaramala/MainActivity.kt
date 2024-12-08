@@ -1,6 +1,7 @@
 package com.example.swaramala
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.GridView
@@ -60,6 +61,17 @@ class MainActivity : FragmentActivity() {
                 ).show();
 
                 //TODO Call generate sequence function
+                var swaramGenUtils = availableSwaramsViewModel.getList()?.let { SwaramGenUtils(it) }
+                val testSwaram = SwaramModel("P_LOW", "P_LOW", "P (LOW)")
+                var testPattern = listOf(testSwaram, SwaramModel("D", "D", "D"), SwaramModel("S", "S", "S"))
+                val nextNote = swaramGenUtils?.getNextNote(testSwaram)
+                Log.d("MainActivity", nextNote.toString());
+
+                val nextNotes = swaramGenUtils?.getNextNNotes(testSwaram,5)
+                Log.d("MainActivity", nextNotes.toString());
+
+                val nextSeq = swaramGenUtils?.getNextSequenceForPattern(testPattern)
+                Log.d("MainActivity", "Next Sequence for $testPattern = $nextSeq");
 
                 //TODO call play function
             }
