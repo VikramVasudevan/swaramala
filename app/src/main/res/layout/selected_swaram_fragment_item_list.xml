@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list"
     android:name="com.example.swaramala.SelectedSwaramItemFragment"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".SelectedSwaramItemFragment"
-    tools:listitem="@layout/selected_swaram_fragment_item" >
+    tools:listitem="@layout/selected_swaram_fragment_item">
 
 </androidx.recyclerview.widget.RecyclerView>

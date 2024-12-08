@@ -7,5 +7,6 @@
     <string name="dha_lower">D</string>
     <string name="sa_higher">Ṡ</string>
     <string name="select_swarams">Select the swarams you need.</string>
-    <string name="next_step">NEXT</string>
+    <string name="selected_swarams">Selected swarams: </string>
+    <string name="next_step">PLAY</string>
 </resources>

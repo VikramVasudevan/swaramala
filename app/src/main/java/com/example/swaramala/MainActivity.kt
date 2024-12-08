@@ -1,8 +1,11 @@
 package com.example.swaramala
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.GridView
 import android.widget.ListView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.material3.Text
@@ -16,8 +19,6 @@ import com.example.swaramala.databinding.ActivityMainBinding
 import com.example.swaramala.ui.theme.SwaraMalaTheme
 
 class MainActivity : FragmentActivity() {
-    // private lateinit var selectedSwaramListView : ListView
-
     private lateinit var activityMainBinding: ActivityMainBinding
 
     private val availableSwaramsViewModel: AvailableSwaramsViewModel by viewModels()
@@ -26,7 +27,7 @@ class MainActivity : FragmentActivity() {
 
     private fun initializeSwaramGrid(){
         val swaramModelArrayList: ArrayList<SwaramModel> = ArrayList<SwaramModel>()
-        swaramModelArrayList.add(SwaramModel("P_LOW", "P_LOW", "p (LOW)"))
+        swaramModelArrayList.add(SwaramModel("P_LOW", "P_LOW", "P (LOW)"))
         swaramModelArrayList.add(SwaramModel("D_LOW", "D_LOW", "D (LOW)"))
         swaramModelArrayList.add(SwaramModel("S", "S", "S"))
         swaramModelArrayList.add(SwaramModel("R", "R", "R"))
@@ -45,14 +46,25 @@ class MainActivity : FragmentActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-        // selectedSwaramListView = findViewById(R.id.selectedSwaramsList)
-
-        // selectedSwaramListView.adapter = SelectedSwaramAdapter(this, ArrayList<SwaramModel>())
-        // swaramGrid.adapter = SwaramAdapter(this, swaramModelArrayList, selectedSwaramListView)
 
         initializeSwaramGrid()
-        // selectedSwaramsBinding = SelectedSwaramsBinding.inflate(layoutInflater)
+        val playButton = findViewById<Button>(R.id.playButton)
+        playButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                // Do some work here
+                // println("You clicked on button ${swaramModel.getLabel()}")
+                Toast.makeText(
+                    applicationContext,
+                    "You clicked on play button ${selectedSwaramsViewModel.getList().toString()}",
+                    Toast.LENGTH_LONG
+                ).show();
 
+                //TODO Call generate sequence function
+
+                //TODO call play function
+            }
+        }
+        )
     }
 
     fun toggleSwaram(prmSelected : Any) {

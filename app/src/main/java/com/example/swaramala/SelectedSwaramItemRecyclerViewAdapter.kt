@@ -30,8 +30,9 @@ class SelectedSwaramItemRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.getId()
-        holder.contentView.text = item.getName()
+        //holder.idView.text = item.getId()
+        holder.idView.text = "${position + 1}. "
+        holder.contentView.text = item.getLabel()
     }
 
     override fun getItemCount(): Int = values.size
