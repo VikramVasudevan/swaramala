@@ -42,12 +42,13 @@ class SelectedSwaramItemFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = selectedSwaramsViewModel.getList()
-                    ?.let { SelectedSwaramItemRecyclerViewAdapter(it) }
 
                 selectedSwaramsViewModel.selectedSwarams.observeForever(Observer { swaram ->
                     // Perform an action with the latest item data.
                     Log.i("SelectedSwaramItemFragment","Data changed ${swaram}");
+                    adapter = selectedSwaramsViewModel.getList()
+                        ?.let { SelectedSwaramItemRecyclerViewAdapter(it) }
+
                 })
 
             }
