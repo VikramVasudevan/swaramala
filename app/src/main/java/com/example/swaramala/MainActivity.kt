@@ -24,6 +24,7 @@ class MainActivity : FragmentActivity() {
 
     private val availableSwaramsViewModel: AvailableSwaramsViewModel by viewModels()
     val selectedSwaramsViewModel: SelectedSwaramsModel by viewModels()
+    val extrapolatedSwaramPatternViewModel: ExtrapolatedSwaramPatternModel by viewModels()
 
 
     private fun initializeSwaramGrid(){
@@ -79,8 +80,12 @@ class MainActivity : FragmentActivity() {
                 val lowestSwaram = swaramGenUtils?.getLowestSwaramInPattern(testPattern)
                 Log.d("MainActivity", "lowestSwaram $testPattern = $lowestSwaram");
 
-                val fullpattern = swaramGenUtils?.getNextNSequenceForPattern(testPattern, 5)
+                val fullpattern = selectedSwaramsViewModel.getList()
+                    ?.let { swaramGenUtils?.getNextNSequenceForPattern(it, 5) }
                 Log.d("MainActivity", "fullpattern $fullpattern");
+                if (fullpattern != null) {
+                    extrapolatedSwaramPatternViewModel.setList(fullpattern)
+                }
                 //TODO call play function
             }
         }
