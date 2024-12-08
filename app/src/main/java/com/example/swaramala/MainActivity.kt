@@ -73,6 +73,14 @@ class MainActivity : FragmentActivity() {
                 val nextSeq = swaramGenUtils?.getNextSequenceForPattern(testPattern)
                 Log.d("MainActivity", "Next Sequence for $testPattern = $nextSeq");
 
+                val highestSwaram = swaramGenUtils?.getHighestSwaramInPattern(testPattern)
+                Log.d("MainActivity", "highestSwaram $testPattern = $highestSwaram");
+
+                val lowestSwaram = swaramGenUtils?.getLowestSwaramInPattern(testPattern)
+                Log.d("MainActivity", "lowestSwaram $testPattern = $lowestSwaram");
+
+                val fullpattern = swaramGenUtils?.getNextNSequenceForPattern(testPattern, 5)
+                Log.d("MainActivity", "fullpattern $fullpattern");
                 //TODO call play function
             }
         }
