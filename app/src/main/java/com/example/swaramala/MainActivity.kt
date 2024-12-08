@@ -1,11 +1,10 @@
 package com.example.swaramala
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.GridView
-import android.widget.ListView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -17,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.FragmentActivity
 import com.example.swaramala.databinding.ActivityMainBinding
 import com.example.swaramala.ui.theme.SwaraMalaTheme
+
 
 class MainActivity : FragmentActivity() {
     private lateinit var activityMainBinding: ActivityMainBinding
@@ -85,6 +85,7 @@ class MainActivity : FragmentActivity() {
                 if (fullpattern != null) {
                     extrapolatedSwaramPatternViewModel.setList(fullpattern)
                 }
+                startActivity(Intent(applicationContext, PlaySwaramsActivity::class.java))
                 //TODO call play function
             }
         }

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/fullscreenBackgroundColor"
-    android:theme="@style/ThemeOverlay.SwaraMala.FullscreenContainer"
+    android:background="@color/purple_200"
+    android:theme="@style/Theme.AppCompat"
     tools:context=".PlaySwaramsActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
@@ -17,7 +17,7 @@
         android:gravity="center"
         android:keepScreenOn="true"
         android:text="@string/dummy_content"
-        android:textColor="?attr/fullscreenTextColor"
+        android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold" />
 
@@ -30,7 +30,6 @@
 
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
-            style="@style/Widget.Theme.SwaraMala.ButtonBar.Fullscreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
@@ -39,7 +38,6 @@
 
             <Button
                 android:id="@+id/dummy_button"
-                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

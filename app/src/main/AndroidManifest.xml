@@ -17,7 +17,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:label="@string/title_activity_play_swarams"
-            android:theme="@style/Theme.SwaraMala.Fullscreen" />
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

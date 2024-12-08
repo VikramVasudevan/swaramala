@@ -2,6 +2,7 @@ package com.example.swaramala
 
 import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -90,6 +91,11 @@ class PlaySwaramsActivity : AppCompatActivity() {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         binding.dummyButton.setOnTouchListener(delayHideTouchListener)
+        binding.dummyButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                startActivity(Intent(applicationContext, MainActivity::class.java))
+            }
+        })
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
