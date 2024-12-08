@@ -63,19 +63,26 @@
                 android:id="@+id/fragmentContainerView"
                 android:name="com.example.swaramala.SelectedSwaramItemFragment"
                 android:layout_width="wrap_content"
-                android:layout_height="250dp" android:layout_margin="10dp" />
+                android:layout_height="100dp" android:layout_margin="10dp" />
 
             <Button
-            android:id="@+id/playButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/holo_green_dark"
-            android:text="@string/next_step"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_gravity="bottom|center_horizontal"
-            />
+                android:id="@+id/playButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_green_dark"
+                android:text="@string/next_step"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="bottom|center_horizontal"
+                />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerViewPlayPattern"
+                android:name="com.example.swaramala.ExtrapolatedSwaramPatternFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp" android:layout_margin="10dp" />
+
         </LinearLayout>
 
 <!--        <include layout="@layout/selected_swarams"/>-->

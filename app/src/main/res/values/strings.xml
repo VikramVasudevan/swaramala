@@ -9,4 +9,7 @@
     <string name="select_swarams">Select the swarams you need.</string>
     <string name="selected_swarams">Selected swarams: </string>
     <string name="next_step">PLAY</string>
+    <string name="title_activity_play_swarams">PlaySwaramsActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

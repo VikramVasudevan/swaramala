@@ -11,10 +11,10 @@ class ExtrapolatedSwaramPatternModel : ViewModel() {
 
     fun addSwaramPattern(swaramPattern: List<SwaramModel>) {
         if(mutableExtrapolatedSwaramPattern.value == null) {
-            Log.d("SelectedSwaramsModel.addSwaram", "Resetting list")
+            Log.d("ExtrapolatedSwaramPatternModel.addSwaram", "Resetting list")
             mutableExtrapolatedSwaramPattern.setValue (ArrayList<List<SwaramModel>>());
         }
-        Log.d("SelectedSwaramsModel.addSwaram", "Adding Swaram " + swaramPattern)
+        Log.d("ExtrapolatedSwaramPatternModel.addSwaram", "Adding Swaram " + swaramPattern)
         mutableExtrapolatedSwaramPattern.value!!.add(swaramPattern)
         mutableExtrapolatedSwaramPattern.setValue(getList()!!)
     }
@@ -24,11 +24,23 @@ class ExtrapolatedSwaramPatternModel : ViewModel() {
     }
 
     fun setList(swaramList: ArrayList<List<SwaramModel>>) {
-        Log.d("SelectedSwaramsModel.setList", "Setting new list  " + swaramList)
+        Log.d("ExtrapolatedSwaramPatternModel.setList", "Setting new list  " + swaramList)
         mutableExtrapolatedSwaramPattern.setValue( swaramList)
     }
 
     fun getList(): ArrayList<List<SwaramModel>>? {
         return mutableExtrapolatedSwaramPattern.value
     }
+    fun getListFlattened(): List<SwaramModel> {
+        var flattened = ArrayList<SwaramModel>();
+        if(mutableExtrapolatedSwaramPattern.value != null) {
+            for (seq in mutableExtrapolatedSwaramPattern.value!!) {
+                for (swaram in seq) {
+                    flattened.add(swaram)
+                }
+            }
+        }
+        return flattened
+    }
+
 }
