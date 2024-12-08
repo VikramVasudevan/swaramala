@@ -3,15 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AvailableSwaramsFragment">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/black"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true" >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="10dp">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:text="@string/select_swarams"
+            android:textColor="#ffffff" />
 
-    <GridView
-        android:id="@+id/swaramGrid"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:numColumns="6"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
-        />
-
+        <GridView
+            android:id="@+id/swaramGrid"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="6"
+            android:verticalSpacing="10dp"
+            android:horizontalSpacing="10dp"
+            />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </FrameLayout>

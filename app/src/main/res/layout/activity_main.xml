@@ -1,90 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cardElevation="10dp"
-        app:cardCornerRadius="20dp"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardMaxElevation="12dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
-        >
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp">
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal"
+                android:background="@color/purple_200"
                 android:maxHeight="50dp"
+                android:padding="10dp"
                 android:text="@string/app_name"
                 android:textAlignment="center"
                 android:textColor="@color/purple_700"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:padding="10dp"
-                android:background="@color/purple_200"/>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/select_swarams"
-            android:textColor="#ffffff"
-            android:background="@color/black"/>
+                android:textStyle="bold" />
 
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragmentContainerViewAvailableSwarams"
                 android:name="com.example.swaramala.AvailableSwaramsFragment"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:padding="10dp"/>
-
-            <TextView
-                android:id="@+id/textViewSelectedSwaramsHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/selected_swarams"
-                android:textColor="#ffffff"
-                android:background="@color/black"/>
+                android:layout_height="wrap_content" />
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragmentContainerView"
                 android:name="com.example.swaramala.SelectedSwaramItemFragment"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp" android:layout_margin="10dp" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
 
             <Button
                 android:id="@+id/playButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@android:color/holo_green_dark"
                 android:text="@string/next_step"
-                android:textColor="#FFFFFF"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_gravity="bottom|center_horizontal"
-                />
+                android:textColor="#FFFFFF" />
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragmentContainerViewPlayPattern"
                 android:name="com.example.swaramala.ExtrapolatedSwaramPatternFragment"
                 android:layout_width="wrap_content"
-                android:layout_height="250dp" android:layout_margin="10dp" />
+                android:layout_height="250dp"
+                android:layout_margin="10dp" />
 
-        </LinearLayout>
-
-<!--        <include layout="@layout/selected_swarams"/>-->
-    </androidx.cardview.widget.CardView>
 </LinearLayout>
