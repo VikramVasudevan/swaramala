@@ -29,6 +29,9 @@ class ExtrapolatedSwaramPatternFragment : Fragment() {
         playPatternGrid = myFragmentView.findViewById(R.id.playPatternGrid)
         extrapolatedSwaramPatternViewModel.extrapolatedSwaramPattern.observeForever( {
             swaram ->
+            playPatternGrid.numColumns =
+                extrapolatedSwaramPatternViewModel.getList()?.get(0)?.size!!;
+
             playPatternGrid.adapter =
                 ExtrapolatedSwaramPatternAdapter(myFragmentView.context, extrapolatedSwaramPatternViewModel.getListFlattened())
 

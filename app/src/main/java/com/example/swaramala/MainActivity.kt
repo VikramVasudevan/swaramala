@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.Observer
 import com.example.swaramala.databinding.ActivityMainBinding
 import com.example.swaramala.ui.theme.SwaraMalaTheme
 
