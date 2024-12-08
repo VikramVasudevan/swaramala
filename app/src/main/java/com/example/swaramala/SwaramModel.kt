@@ -1,6 +1,6 @@
 package com.example.swaramala
 
-class SwaramModel(private var id : String,private var name : String, private var label : String) {
+class SwaramModel(private var id : String, private var name : String, private var label : String) {
     fun getId(): String {
         return id
     }
@@ -23,5 +23,9 @@ class SwaramModel(private var id : String,private var name : String, private var
 
     fun setLabel(label: String) {
         this.label = label
+    }
+
+    override fun toString(): String {
+        return label
     }
 }

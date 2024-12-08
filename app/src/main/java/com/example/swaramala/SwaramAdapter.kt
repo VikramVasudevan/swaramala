@@ -1,14 +1,16 @@
 package com.example.swaramala
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 
-class SwaramAdapter(context: Context, swaramModelArrayList: ArrayList<SwaramModel>) :
+class SwaramAdapter(context: Context, swaramModelArrayList: ArrayList<SwaramModel>?) :
     ArrayAdapter<SwaramModel?>(context, 0, swaramModelArrayList as List<SwaramModel?>) {
 
         private var selectedSwaramsArrayList : ArrayList<SwaramModel> = ArrayList<SwaramModel>()
@@ -33,10 +35,15 @@ class SwaramAdapter(context: Context, swaramModelArrayList: ArrayList<SwaramMode
             swaramButton.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(view: View?) {
                     // Do some work here
-                    println("You clicked on button ${swaramModel.getLabel()}")
+                    // println("You clicked on button ${swaramModel.getLabel()}")
+                    Toast.makeText(context, "You clicked on button ${swaramModel.getLabel()}", Toast.LENGTH_SHORT).show()
 
                     // Update the selectedswaramadapter from here?
                     selectedSwaramsArrayList.add(swaramModel)
+                    (context as? MainActivity)?.selectedSwaramsViewModel?.addSwaram(swaramModel)
+                    Log.d("SwaramAdapter",
+                        (context as? MainActivity)?.selectedSwaramsViewModel?.getList().toString()
+                    );
                 }
 
             })

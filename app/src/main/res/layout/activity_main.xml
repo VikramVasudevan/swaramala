@@ -43,22 +43,18 @@
             android:text="@string/select_swarams"
             android:textColor="#000000" />
 
-        <GridView
-            android:id="@+id/swaramGrid"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:numColumns="4"
-            android:verticalSpacing="10dp"
-            android:horizontalSpacing="10dp"
-             />
 
-            <ListView
-                android:id="@+id/selectedSwaramsList"
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerViewAvailableSwarams"
+                android:name="com.example.swaramala.AvailableSwaramsFragment"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="150dp" />
 
-            </ListView>
-
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerView"
+                android:name="com.example.swaramala.SelectedSwaramItemFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp" />
 
             <Button
             android:id="@+id/button"
