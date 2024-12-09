@@ -39,6 +39,8 @@ class ExtrapolatedSwaramPatternAdapter(context: Context, swaramModelArrayList: L
                     "You clicked on button ${swaramModel.getLabel()}",
                     Toast.LENGTH_SHORT
                 ).show()
+
+                // Play sound on click of button.
             }
         }
         return listitemView

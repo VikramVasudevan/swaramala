@@ -25,8 +25,8 @@ import com.google.gson.reflect.TypeToken
 class PlaySwaramsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlaySwaramsBinding
-    private lateinit var fullscreenContent: TextView
-    private lateinit var fullscreenContentControls: LinearLayout
+    // private lateinit var fullscreenContent: TextView
+    // private lateinit var fullscreenContentControls: LinearLayout
     private val hideHandler = Handler(Looper.myLooper()!!)
 
     val extrapolatedSwaramPatternViewModel: ExtrapolatedSwaramPatternModel by viewModels()
@@ -35,24 +35,24 @@ class PlaySwaramsActivity : AppCompatActivity() {
     private val hidePart2Runnable = Runnable {
         // Delayed removal of status and navigation bar
         if (Build.VERSION.SDK_INT >= 30) {
-            fullscreenContent.windowInsetsController?.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+            // fullscreenContent.windowInsetsController?.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
         } else {
             // Note that some of these constants are new as of API 16 (Jelly Bean)
             // and API 19 (KitKat). It is safe to use them, as they are inlined
             // at compile-time and do nothing on earlier devices.
-            fullscreenContent.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LOW_PROFILE or
-                        View.SYSTEM_UI_FLAG_FULLSCREEN or
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or
-                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
-                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//            fullscreenContent.systemUiVisibility =
+//                View.SYSTEM_UI_FLAG_LOW_PROFILE or
+//                        View.SYSTEM_UI_FLAG_FULLSCREEN or
+//                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+//                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or
+//                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
+//                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         }
     }
     private val showPart2Runnable = Runnable {
         // Delayed display of UI elements
         supportActionBar?.show()
-        fullscreenContentControls.visibility = View.VISIBLE
+        // fullscreenContentControls.visibility = View.VISIBLE
     }
     private var isFullscreen: Boolean = false
 
@@ -88,10 +88,10 @@ class PlaySwaramsActivity : AppCompatActivity() {
         isFullscreen = true
 
         // Set up the user interaction to manually show or hide the system UI.
-        fullscreenContent = binding.fullscreenContent
-        fullscreenContent.setOnClickListener { toggle() }
+        // fullscreenContent = binding.fullscreenContent
+        // fullscreenContent.setOnClickListener { toggle() }
 
-        fullscreenContentControls = binding.fullscreenContentControls
+        // fullscreenContentControls = binding.fullscreenContentControls
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
@@ -113,6 +113,15 @@ class PlaySwaramsActivity : AppCompatActivity() {
             )
             Log.i("PlaySwaramsActivity", "extrapolatedSwaramPatternViewModel = ${extrapolatedSwaramPatternViewModel.getList()}")
 
+            extrapolatedSwaramPatternViewModel.extrapolatedSwaramPattern.observeForever({
+                    swaram ->
+                binding.playPatternGrid.numColumns =
+                    extrapolatedSwaramPatternViewModel.getList()?.get(0)?.size!!;
+
+                binding.playPatternGrid.adapter =
+                    ExtrapolatedSwaramPatternAdapter(applicationContext, extrapolatedSwaramPatternViewModel.getListFlattened())
+
+            })
         }
 
     }
@@ -137,7 +146,7 @@ class PlaySwaramsActivity : AppCompatActivity() {
     private fun hide() {
         // Hide UI first
         supportActionBar?.hide()
-        fullscreenContentControls.visibility = View.GONE
+        // fullscreenContentControls.visibility = View.GONE
         isFullscreen = false
 
         // Schedule a runnable to remove the status and navigation bar after a delay
@@ -148,11 +157,11 @@ class PlaySwaramsActivity : AppCompatActivity() {
     private fun show() {
         // Show the system bar
         if (Build.VERSION.SDK_INT >= 30) {
-            fullscreenContent.windowInsetsController?.show(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+            // fullscreenContent.windowInsetsController?.show(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
         } else {
-            fullscreenContent.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//            fullscreenContent.systemUiVisibility =
+//                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+//                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
         }
         isFullscreen = true
 
