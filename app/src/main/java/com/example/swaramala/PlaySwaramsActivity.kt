@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.swaramala.databinding.ActivityPlaySwaramsBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.util.concurrent.TimeUnit
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -32,6 +33,7 @@ class PlaySwaramsActivity : AppCompatActivity() {
         var audioPlayer : AudioPlayer = AudioPlayer()
         val resID: Int = resources.getIdentifier(prmSwaram, "raw", packageName)
         audioPlayer.play(applicationContext, resID)
+        TimeUnit.SECONDS.sleep(1L)
         audioPlayer.waitForPlayToEnd()
     }
     @SuppressLint("InlinedApi")
