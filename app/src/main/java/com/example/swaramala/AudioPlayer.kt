@@ -29,4 +29,12 @@ class AudioPlayer {
             Log.e("AudioPlayer","Mediaplayer is null")
         }
     }
+
+    fun waitForPlayToEnd() {
+        if(mMediaPlayer != null) {
+            while(mMediaPlayer!!.isPlaying){
+                // NOOP
+            }
+        }
+    }
 }

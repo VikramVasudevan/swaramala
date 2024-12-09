@@ -2,7 +2,6 @@ package com.example.swaramala
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -10,9 +9,6 @@ import android.os.Looper
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import android.view.WindowInsets
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swaramala.databinding.ActivityPlaySwaramsBinding
@@ -32,10 +28,11 @@ class PlaySwaramsActivity : AppCompatActivity() {
 
     val extrapolatedSwaramPatternViewModel: ExtrapolatedSwaramPatternModel by viewModels()
 
-    fun playSound() {
+    fun playSound(prmSwaram : String) {
         var audioPlayer : AudioPlayer = AudioPlayer()
-        val resID: Int = resources.getIdentifier("ga", "raw", packageName)
+        val resID: Int = resources.getIdentifier(prmSwaram, "raw", packageName)
         audioPlayer.play(applicationContext, resID)
+        audioPlayer.waitForPlayToEnd()
     }
     @SuppressLint("InlinedApi")
     private val hidePart2Runnable = Runnable {
@@ -111,7 +108,16 @@ class PlaySwaramsActivity : AppCompatActivity() {
 
         binding.playAllButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
-                playSound()
+                extrapolatedSwaramPatternViewModel.getListFlattened().forEachIndexed {
+                        index, swaram ->
+                    Log.d("Player","Playing swaram ${swaram.getFileName()} at index $index")
+                    var gridTile = binding.playPatternGrid.getChildAt(index)
+                    if(gridTile != null) {
+                        gridTile.setBackgroundColor(getResources().getColor(R.color.white));
+                    }
+                    playSound(swaram.getFileName())
+                }
+
             }
         })
 
