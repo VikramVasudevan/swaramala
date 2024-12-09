@@ -3,17 +3,13 @@ package com.example.swaramala
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
-import android.widget.TextView
 import android.widget.Toast
-import java.util.concurrent.TimeUnit
 
 
 class ExtrapolatedSwaramPatternAdapter(context: Context, swaramModelArrayList: List<SwaramModel>) :
@@ -60,18 +56,13 @@ class ExtrapolatedSwaramPatternAdapter(context: Context, swaramModelArrayList: L
 
                     swaramButton.isEnabled = false
                     swaramButton.text = "Playing " + swaramModel.getLabel()
-                    swaramButton.setBackgroundColor(Color.parseColor("yellow"));
-                    Handler(Looper.getMainLooper()).postDelayed(
-                        {
-                            // TODO Play sound on click of button.
-                            playSound(swaramModel.getFileName(), {})
-                            swaramButton.isEnabled = true
-                            swaramButton.setBackgroundColor(colornumber)
-                            swaramButton.text = swaramModel.getLabel()
-
-                        },
-                        100 // value in milliseconds
-                    )
+                    swaramButton.setBackgroundColor(Color.parseColor("#FFD700"));
+                    TimerUtils.setTimeout({
+                        playSound(swaramModel.getFileName(), {})
+                        swaramButton.isEnabled = true
+                        swaramButton.setBackgroundColor(colornumber)
+                        swaramButton.text = swaramModel.getLabel()
+                    }, 100)
                 }
             }
         }

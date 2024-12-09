@@ -106,7 +106,7 @@ class SwaramGenUtils(baseSwaramList : List<SwaramModel>) {
         // take the highest swaram and apply the vector to derive the mirror image.
         var swaram =         highestSwaram
         for(i in 0..prmPattern.size-1) {
-            val swaram = swaram?.let { getSwaramFromDelta(it, vector[i] * -1) }
+            swaram = swaram?.let { getSwaramFromDelta(it, vector[i] * -1) }
             if (swaram != null) {
                 mirrorImage.add(swaram)
             }

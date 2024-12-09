@@ -2,6 +2,7 @@ package com.example.swaramala
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -82,6 +83,23 @@ class PlaySwaramsActivity : AppCompatActivity() {
         false
     }
 
+    fun changeTileBackGroundColor(index : Int){
+        binding.playPatternGrid.smoothScrollToPosition(index)
+        var gridTile = binding.playPatternGrid.getChildAt(index)
+        if(gridTile != null) {
+            Log.w("playAll","GridTile is not null!")
+            gridTile.requestFocus();
+            var button = gridTile.findViewWithTag<Button>("swaram_button")
+            // button.setBackgroundColor(Color.parseColor("#FFD700"));
+            TimerUtils.setTimeout({
+                button.callOnClick()
+            }, (4000 * index).toLong())
+
+        } else {
+            Log.w("playAll","GridTile is null!")
+        }
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,6 +108,8 @@ class PlaySwaramsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.playPatternGrid.expanded = true;
 
         isFullscreen = true
 
@@ -114,15 +134,7 @@ class PlaySwaramsActivity : AppCompatActivity() {
                 extrapolatedSwaramPatternViewModel.getListFlattened().forEachIndexed {
                         index, swaram ->
                     Log.d("Player","Playing swaram ${swaram.getFileName()} at index $index")
-                    var gridTile = binding.playPatternGrid.getChildAt(index)
-                    if(gridTile != null) {
-                        Log.w("playAll","GridTile is not null!")
-                        gridTile.requestFocus();
-                        var button = gridTile.findViewWithTag<Button>("swaram_button")
-                        button.callOnClick()
-                    } else {
-                        Log.w("playAll","GridTile is null!")
-                    }
+                    changeTileBackGroundColor(index)
                     // playSound(swaram.getFileName())
                 }
 

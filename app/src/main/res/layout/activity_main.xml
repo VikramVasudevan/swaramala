@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" android:background="@color/black">
 
 
             <TextView
@@ -35,22 +35,29 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp" />
 
-            <Button
-                android:id="@+id/playButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@android:color/holo_green_dark"
-                android:text="@string/next_step"
-                android:textColor="#FFFFFF" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/playButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:text="@string/next_step"
+                    android:theme="@style/Theme.MaterialComponents"/>
+<!--            <Button-->
+<!--                android:id="@+id/playButton1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="bottom|center_horizontal"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:text="@string/next_step"-->
+<!--                android:textColor="#FFFFFF" />-->
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainerViewPlayPattern"
-                android:name="com.example.swaramala.ExtrapolatedSwaramPatternFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="250dp"
-                android:layout_margin="10dp" />
+<!--            <androidx.fragment.app.FragmentContainerView-->
+<!--                android:id="@+id/fragmentContainerViewPlayPattern"-->
+<!--                android:name="com.example.swaramala.ExtrapolatedSwaramPatternFragment"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="250dp"-->
+<!--                android:layout_margin="10dp" />-->
 
 </LinearLayout>
