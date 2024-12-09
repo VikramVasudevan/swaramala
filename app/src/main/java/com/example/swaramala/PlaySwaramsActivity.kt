@@ -2,6 +2,7 @@ package com.example.swaramala
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -31,6 +32,11 @@ class PlaySwaramsActivity : AppCompatActivity() {
 
     val extrapolatedSwaramPatternViewModel: ExtrapolatedSwaramPatternModel by viewModels()
 
+    fun playSound() {
+        var audioPlayer : AudioPlayer = AudioPlayer()
+        val resID: Int = resources.getIdentifier("ga", "raw", packageName)
+        audioPlayer.play(applicationContext, resID)
+    }
     @SuppressLint("InlinedApi")
     private val hidePart2Runnable = Runnable {
         // Delayed removal of status and navigation bar
@@ -102,6 +108,13 @@ class PlaySwaramsActivity : AppCompatActivity() {
                 startActivity(Intent(applicationContext, MainActivity::class.java))
             }
         })
+
+        binding.playAllButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                playSound()
+            }
+        })
+
         Log.i("PlaySwaramsActivity", "Getting Extras")
         val b = intent.extras;
         Log.i("PlaySwaramsActivity", "Extras = $b")

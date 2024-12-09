@@ -1,6 +1,7 @@
 package com.example.swaramala
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+
 
 class ExtrapolatedSwaramPatternAdapter(context: Context, swaramModelArrayList: List<SwaramModel>) :
     ArrayAdapter<SwaramModel?>(context, 0, swaramModelArrayList as List<SwaramModel>) {
@@ -19,6 +21,13 @@ class ExtrapolatedSwaramPatternAdapter(context: Context, swaramModelArrayList: L
     constructor(context: Context, swaramModelArrayList: ArrayList<SwaramModel>, selectedSwaramsListView: ListView) : this(context, swaramModelArrayList) {
         this.selectedSwaramsListView = selectedSwaramsListView;
     }
+
+    fun playSound(prmSwaram : String) {
+        var audioPlayer : AudioPlayer = AudioPlayer()
+        val resID: Int = context.resources.getIdentifier(prmSwaram, "raw", context.packageName)
+        audioPlayer.play(context, resID)
+    }
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
         var listitemView = convertView
@@ -40,7 +49,8 @@ class ExtrapolatedSwaramPatternAdapter(context: Context, swaramModelArrayList: L
                     Toast.LENGTH_SHORT
                 ).show()
 
-                // Play sound on click of button.
+                // TODO Play sound on click of button.
+                playSound(swaramModel.getFileName())
             }
         }
         return listitemView

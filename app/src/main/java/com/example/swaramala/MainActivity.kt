@@ -29,17 +29,17 @@ class MainActivity : FragmentActivity() {
 
     private fun initializeSwaramGrid(){
         val swaramModelArrayList: ArrayList<SwaramModel> = ArrayList<SwaramModel>()
-        swaramModelArrayList.add(SwaramModel("P_LOW", "P_LOW", "P (LOW)"))
-        swaramModelArrayList.add(SwaramModel("D_LOW", "D_LOW", "D (LOW)"))
-        swaramModelArrayList.add(SwaramModel("S", "S", "S"))
-        swaramModelArrayList.add(SwaramModel("R", "R", "R"))
-        swaramModelArrayList.add(SwaramModel("G", "G", "G"))
-        swaramModelArrayList.add(SwaramModel("P", "P", "P"))
-        swaramModelArrayList.add(SwaramModel("D", "D", "D"))
-        swaramModelArrayList.add(SwaramModel("S_HIGH", "S_HIGH", "S (HIGH)"))
-        swaramModelArrayList.add(SwaramModel("R_HIGH", "R_HIGH", "R (HIGH)"))
-        swaramModelArrayList.add(SwaramModel("G_HIGH", "G_HIGH", "G (HIGH)"))
-        swaramModelArrayList.add(SwaramModel("P_HIGH", "P_HIGH", "P (HIGH)"))
+        swaramModelArrayList.add(SwaramModel("P_LOW", "P_LOW", "P (LOW)", "pa"))
+        swaramModelArrayList.add(SwaramModel("D_LOW", "D_LOW", "D (LOW)", "dha"))
+        swaramModelArrayList.add(SwaramModel("S", "S", "S", "sa_lower"))
+        swaramModelArrayList.add(SwaramModel("R", "R", "R", "ri"))
+        swaramModelArrayList.add(SwaramModel("G", "G", "G", "ga"))
+        swaramModelArrayList.add(SwaramModel("P", "P", "P", "pa"))
+        swaramModelArrayList.add(SwaramModel("D", "D", "D", "dha"))
+        swaramModelArrayList.add(SwaramModel("S_HIGH", "S_HIGH", "S (HIGH)", "sa_higher"))
+        swaramModelArrayList.add(SwaramModel("R_HIGH", "R_HIGH", "R (HIGH)", "ri_higher"))
+        swaramModelArrayList.add(SwaramModel("G_HIGH", "G_HIGH", "G (HIGH)", "ga_higher"))
+        swaramModelArrayList.add(SwaramModel("P_HIGH", "P_HIGH", "P (HIGH)", "pa_higher"))
 
         availableSwaramsViewModel.setList(swaramModelArrayList);
     }
@@ -63,8 +63,8 @@ class MainActivity : FragmentActivity() {
 
                 //TODO Call generate sequence function
                 var swaramGenUtils = availableSwaramsViewModel.getList()?.let { SwaramGenUtils(it) }
-                val testSwaram = SwaramModel("P_LOW", "P_LOW", "P (LOW)")
-                var testPattern = listOf(testSwaram, SwaramModel("D", "D", "D"), SwaramModel("S", "S", "S"))
+                val testSwaram = SwaramModel("P_LOW", "P_LOW", "P (LOW)", "pa")
+                var testPattern = listOf(testSwaram, SwaramModel("D", "D", "D", "dha"), SwaramModel("S", "S", "S", "sa_higher"))
                 val nextNote = swaramGenUtils?.getNextNote(testSwaram)
                 Log.d("MainActivity", nextNote.toString());
 
