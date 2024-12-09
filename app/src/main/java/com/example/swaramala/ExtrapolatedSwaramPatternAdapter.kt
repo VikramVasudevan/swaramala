@@ -1,15 +1,19 @@
 package com.example.swaramala
 
 import android.content.Context
-import android.media.MediaPlayer
-import android.util.Log
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import java.util.concurrent.TimeUnit
 
 
 class ExtrapolatedSwaramPatternAdapter(context: Context, swaramModelArrayList: List<SwaramModel>) :
@@ -22,10 +26,11 @@ class ExtrapolatedSwaramPatternAdapter(context: Context, swaramModelArrayList: L
         this.selectedSwaramsListView = selectedSwaramsListView;
     }
 
-    fun playSound(prmSwaram : String) {
+    fun playSound(prmSwaram : String, callbackFunction : Function<Any>) {
         var audioPlayer : AudioPlayer = AudioPlayer()
         val resID: Int = context.resources.getIdentifier(prmSwaram, "raw", context.packageName)
         audioPlayer.play(context, resID)
+        audioPlayer.waitForPlayToEnd(callbackFunction)
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -37,20 +42,37 @@ class ExtrapolatedSwaramPatternAdapter(context: Context, swaramModelArrayList: L
         }
 
         val swaramModel: SwaramModel? = getItem(position)
-        val swaramButton = listitemView!!.findViewById<TextView>(R.id.swaramId)
+        val swaramButton = listitemView!!.findViewById<Button>(R.id.swaramId)
 
         if (swaramModel != null) {
-            swaramButton.setText(swaramModel.getLabel())
+            swaramButton.text = swaramModel.getLabel()
             swaramButton.setOnClickListener { // Do some work here
                 // println("You clicked on button ${swaramModel.getLabel()}")
-                Toast.makeText(
-                    context,
-                    "You clicked on button ${swaramModel.getLabel()}",
-                    Toast.LENGTH_SHORT
-                ).show()
+                var x = 1;
+                synchronized(x) {
+                    Toast.makeText(
+                        context,
+                        "You clicked on button ${swaramModel.getLabel()}",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
-                // TODO Play sound on click of button.
-                playSound(swaramModel.getFileName())
+                    val colornumber = (swaramButton.background as ColorDrawable).color
+
+                    swaramButton.isEnabled = false
+                    swaramButton.text = "Playing " + swaramModel.getLabel()
+                    swaramButton.setBackgroundColor(Color.parseColor("yellow"));
+                    Handler(Looper.getMainLooper()).postDelayed(
+                        {
+                            // TODO Play sound on click of button.
+                            playSound(swaramModel.getFileName(), {})
+                            swaramButton.isEnabled = true
+                            swaramButton.setBackgroundColor(colornumber)
+                            swaramButton.text = swaramModel.getLabel()
+
+                        },
+                        100 // value in milliseconds
+                    )
+                }
             }
         }
         return listitemView

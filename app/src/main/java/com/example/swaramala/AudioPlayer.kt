@@ -3,6 +3,8 @@ package com.example.swaramala
 import android.content.Context
 import android.media.MediaPlayer
 import android.media.MediaPlayer.OnCompletionListener
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 
 
@@ -30,7 +32,14 @@ class AudioPlayer {
         }
     }
 
-    fun waitForPlayToEnd() {
+    fun waitForPlayToEnd(callbackFunction : Function<Any>) {
+        Handler(Looper.getMainLooper()).postDelayed(
+            {
+                // This method will be executed once the timer is over
+                callbackFunction.apply {  }
+            },
+            1000 // value in milliseconds
+        )
         if(mMediaPlayer != null) {
             while(mMediaPlayer!!.isPlaying){
                 // NOOP

@@ -9,6 +9,7 @@ import android.os.Looper
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swaramala.databinding.ActivityPlaySwaramsBinding
@@ -33,8 +34,8 @@ class PlaySwaramsActivity : AppCompatActivity() {
         var audioPlayer : AudioPlayer = AudioPlayer()
         val resID: Int = resources.getIdentifier(prmSwaram, "raw", packageName)
         audioPlayer.play(applicationContext, resID)
-        TimeUnit.SECONDS.sleep(1L)
-        audioPlayer.waitForPlayToEnd()
+        TimeUnit.SECONDS.sleep(3L)
+        // audioPlayer.waitForPlayToEnd()
     }
     @SuppressLint("InlinedApi")
     private val hidePart2Runnable = Runnable {
@@ -115,9 +116,14 @@ class PlaySwaramsActivity : AppCompatActivity() {
                     Log.d("Player","Playing swaram ${swaram.getFileName()} at index $index")
                     var gridTile = binding.playPatternGrid.getChildAt(index)
                     if(gridTile != null) {
-                        gridTile.setBackgroundColor(getResources().getColor(R.color.white));
+                        Log.w("playAll","GridTile is not null!")
+                        gridTile.requestFocus();
+                        var button = gridTile.findViewWithTag<Button>("swaram_button")
+                        button.callOnClick()
+                    } else {
+                        Log.w("playAll","GridTile is null!")
                     }
-                    playSound(swaram.getFileName())
+                    // playSound(swaram.getFileName())
                 }
 
             }
