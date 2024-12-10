@@ -3,6 +3,7 @@ package com.example.swaramala
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.LayerDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +53,8 @@ class ExtrapolatedSwaramPatternAdapter(context: Context, swaramModelArrayList: L
                         Toast.LENGTH_SHORT
                     ).show()
 
-                    val colornumber = (swaramButton.background as ColorDrawable).color
+                    val colorDrawable = (swaramButton.background as ColorDrawable)
+                    val colornumber = colorDrawable.color
 
                     swaramButton.isEnabled = false
                     swaramButton.text = "Playing " + swaramModel.getLabel()
