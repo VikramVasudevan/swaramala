@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swaramala.databinding.ActivityPlaySwaramsBinding
@@ -82,6 +83,10 @@ class PlaySwaramsActivity : AppCompatActivity() {
         false
     }
 
+    var playingInProgress : Boolean = false;
+    var stopRequestPlaced : Boolean = false;
+    var noteDuration = 4000;
+
     fun clickButtonAtIndex(index : Int){
         binding.playPatternGrid.smoothScrollToPosition(index)
         val gridTile = binding.playPatternGrid.getChildAt(index)
@@ -91,8 +96,10 @@ class PlaySwaramsActivity : AppCompatActivity() {
             val button = gridTile.findViewWithTag<Button>("swaram_button")
             // button.setBackgroundColor(Color.parseColor("#FFD700"));
             TimerUtils.setTimeout({
-                button.callOnClick()
-            }, (4000 * index).toLong())
+                if(!stopRequestPlaced) {
+                    button.callOnClick()
+                }
+            }, (noteDuration * index).toLong())
         } else {
             Log.w("playAll","GridTile is null!")
         }
@@ -132,6 +139,14 @@ class PlaySwaramsActivity : AppCompatActivity() {
 
         binding.playAllButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
+                onPlayStart();
+                // Stop play after all swarams have finished playing.
+                TimerUtils.setTimeout({
+                    onPlayStopped()
+                    stopRequestPlaced = false
+                },
+                    (noteDuration * extrapolatedSwaramPatternViewModel.getListFlattened().size).toLong()
+                )
                 extrapolatedSwaramPatternViewModel.getListFlattened().forEachIndexed {
                         index, swaram ->
                     Log.d("Player","Playing swaram ${swaram.getFileName()} at index $index")
@@ -139,6 +154,13 @@ class PlaySwaramsActivity : AppCompatActivity() {
                     // playSound(swaram.getFileName())
                 }
 
+            }
+        })
+
+        binding.stopButton.visibility =View.INVISIBLE
+        binding.stopButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                onStopRequested();
             }
         })
 
@@ -164,6 +186,33 @@ class PlaySwaramsActivity : AppCompatActivity() {
             })
         }
 
+    }
+
+    private fun onStopRequested() {
+        binding.stopButton.text = "Stopping ..."
+        Toast.makeText(applicationContext, "Stopping ...", Toast.LENGTH_LONG).show()
+        stopRequestPlaced = !stopRequestPlaced
+        TimerUtils.setTimeout({
+            binding.stopButton.text = "STOP"
+            onPlayStopped()
+        },noteDuration.toLong())
+
+    }
+
+    private fun onPlayStart() {
+        playingInProgress = true
+        binding.playAllButton.text = "Playing ..."
+        binding.playAllButton.isEnabled = false;
+        binding.stopButton.isEnabled = true
+        binding.stopButton.visibility = View.VISIBLE
+    }
+
+    fun onPlayStopped() {
+        playingInProgress = false
+        binding.playAllButton.isEnabled = true;
+        binding.stopButton.visibility = View.INVISIBLE
+        binding.stopButton.isEnabled = false
+        binding.playAllButton.text = "PLAY"
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

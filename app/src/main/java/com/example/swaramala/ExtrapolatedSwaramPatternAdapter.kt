@@ -48,7 +48,7 @@ class ExtrapolatedSwaramPatternAdapter(context: Context, swaramModelArrayList: L
                 synchronized(x) {
                     Toast.makeText(
                         context,
-                        "You clicked on button ${swaramModel.getLabel()}",
+                        "Now playing ${swaramModel.getLabel()} ...",
                         Toast.LENGTH_SHORT
                     ).show()
 

@@ -75,7 +75,7 @@ class MainActivity : FragmentActivity() {
                 // println("You clicked on button ${swaramModel.getLabel()}")
                 Toast.makeText(
                     applicationContext,
-                    "You clicked on play button ${selectedSwaramsViewModel.getList().toString()}",
+                    "Now playing ${selectedSwaramsViewModel.getList().toString()} ...",
                     Toast.LENGTH_LONG
                 ).show();
 

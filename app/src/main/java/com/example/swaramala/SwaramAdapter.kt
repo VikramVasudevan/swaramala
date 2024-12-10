@@ -36,7 +36,7 @@ class SwaramAdapter(context: Context, swaramModelArrayList: ArrayList<SwaramMode
                 override fun onClick(view: View?) {
                     // Do some work here
                     // println("You clicked on button ${swaramModel.getLabel()}")
-                    Toast.makeText(context, "You clicked on button ${swaramModel.getLabel()}", Toast.LENGTH_SHORT).show()
+                    // Toast.makeText(context, "Now playing ${swaramModel.getLabel()} ...", Toast.LENGTH_SHORT).show()
 
                     // Update the selectedswaramadapter from here?
                     selectedSwaramsArrayList.add(swaramModel)
