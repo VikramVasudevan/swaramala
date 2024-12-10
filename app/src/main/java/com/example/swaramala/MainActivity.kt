@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentActivity
 import com.example.swaramala.databinding.ActivityMainBinding
 import com.example.swaramala.ui.theme.SwaraMalaTheme
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 
 class MainActivity : FragmentActivity() {
@@ -49,7 +50,24 @@ class MainActivity : FragmentActivity() {
         setContentView(R.layout.activity_main)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
-        initializeSwaramGrid()
+        val b = intent.extras;
+        Log.i("MainActivity", "Extras = $b")
+        if (b != null) {
+            val type = object : TypeToken<ArrayList<SwaramModel>>() {}.type
+
+            val strSelectedSwaramsViewModel = b.getString("selectedSwaramsViewModel")
+            if(strSelectedSwaramsViewModel != null) {
+                selectedSwaramsViewModel.setList(
+                    Gson().fromJson(strSelectedSwaramsViewModel, type)
+                )
+                Log.d("MainActivity", "selectedSwaramsViewModel = ${selectedSwaramsViewModel.getList()}")
+            }
+            else {
+                Log.w("MainActivity", "selectedSwaramsViewModel is null!")
+            }
+        }
+
+            initializeSwaramGrid()
         val playButton = findViewById<Button>(R.id.playButton)
         playButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
@@ -61,8 +79,9 @@ class MainActivity : FragmentActivity() {
                     Toast.LENGTH_LONG
                 ).show();
 
-                //TODO Call generate sequence function
+                //Call generate sequence function
                 var swaramGenUtils = availableSwaramsViewModel.getList()?.let { SwaramGenUtils(it) }
+                /*
                 val testSwaram = SwaramModel("P_LOW", "P_LOW", "P (LOW)", "pa")
                 var testPattern = listOf(testSwaram, SwaramModel("D", "D", "D", "dha"), SwaramModel("S", "S", "S", "sa_higher"))
                 val nextNote = swaramGenUtils?.getNextNote(testSwaram)
@@ -79,7 +98,7 @@ class MainActivity : FragmentActivity() {
 
                 val lowestSwaram = swaramGenUtils?.getLowestSwaramInPattern(testPattern)
                 Log.d("MainActivity", "lowestSwaram $testPattern = $lowestSwaram");
-
+                */
                 val fullpattern = selectedSwaramsViewModel.getList()
                     ?.let { swaramGenUtils?.getNextNSequenceForPattern(it, 5) }
                 Log.d("MainActivity", "fullpattern $fullpattern");
@@ -89,6 +108,7 @@ class MainActivity : FragmentActivity() {
                 val intent : Intent = Intent(applicationContext, PlaySwaramsActivity::class.java);
                 var gson = Gson();
                 intent.putExtra("extrapolatedSwaramPatternViewModel", gson.toJson(extrapolatedSwaramPatternViewModel.getList()))
+                intent.putExtra("selectedSwaramsViewModel", gson.toJson(selectedSwaramsViewModel.getList()))
                 startActivity(intent)
                 //TODO call play function
             }

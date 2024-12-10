@@ -34,6 +34,6 @@ class SwaramModel(private var id : String, private var name : String, private va
     }
 
     override fun toString(): String {
-        return label
+        return id
     }
 }

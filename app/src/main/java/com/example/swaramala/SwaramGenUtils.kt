@@ -6,7 +6,11 @@ class SwaramGenUtils(baseSwaramList : List<SwaramModel>) {
     var notes : List<SwaramModel> = baseSwaramList;
 
     fun getIndexOfNote (prmNote : SwaramModel): Int {
-        val currIndex = notes.indexOfFirst{ it.getId() === prmNote.getId() }
+        val currIndex = notes.indexOfFirst{ it.getId().trim().equals(prmNote.getId().trim(), ignoreCase = true) }
+        Log.d("SwaramGenUtils", "Index of ${prmNote} = $currIndex")
+        if(currIndex == -1 ) {
+            Log.w("SwaramGenUtils.getIndexOfNote","No [${prmNote}] in $notes")
+        }
         return currIndex
     }
     fun getNextNote(prmNote : SwaramModel): SwaramModel {

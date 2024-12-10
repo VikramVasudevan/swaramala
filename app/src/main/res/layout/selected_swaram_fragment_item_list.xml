@@ -10,6 +10,4 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".SelectedSwaramItemFragment"
-    tools:listitem="@layout/selected_swaram_fragment_item">
-
-</androidx.recyclerview.widget.RecyclerView>
+    tools:listitem="@layout/selected_swaram_fragment_item"/>

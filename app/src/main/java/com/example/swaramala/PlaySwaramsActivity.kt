@@ -123,7 +123,10 @@ class PlaySwaramsActivity : AppCompatActivity() {
         binding.dummyButton.setOnTouchListener(delayHideTouchListener)
         binding.dummyButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
-                startActivity(Intent(applicationContext, MainActivity::class.java))
+                val mainActivityIntent = Intent(applicationContext, MainActivity::class.java)
+                val gson = Gson();
+                mainActivityIntent.putExtra("selectedSwaramsViewModel", intent.getStringExtra("selectedSwaramsViewModel"))
+                startActivity(mainActivityIntent)
             }
         })
 
