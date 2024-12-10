@@ -10,10 +10,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@+id/swaramLabel"
-        android:background="@color/teal_200"
         android:tag="swaram_button"
         app:cornerRadius="10dp"
         android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:background="@drawable/secondary_bg_bordered_button"
+        android:padding="5dp"
+        android:textSize="15sp"
         />
 
 </LinearLayout>

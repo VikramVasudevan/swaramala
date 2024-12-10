@@ -35,13 +35,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp" />
 
-                <com.google.android.material.button.MaterialButton
+                <Button
                     android:id="@+id/playButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
                     android:text="@string/next_step"
-                    android:theme="@style/Theme.MaterialComponents"/>
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/transparent_bg_bordered_button"/>
 <!--            <Button-->
 <!--                android:id="@+id/playButton1"-->
 <!--                android:layout_width="wrap_content"-->

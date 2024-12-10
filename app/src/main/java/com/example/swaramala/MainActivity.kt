@@ -30,17 +30,17 @@ class MainActivity : FragmentActivity() {
 
     private fun initializeSwaramGrid(){
         val swaramModelArrayList: ArrayList<SwaramModel> = ArrayList<SwaramModel>()
-        swaramModelArrayList.add(SwaramModel("P_LOW", "P_LOW", "P (LOW)", "pa"))
-        swaramModelArrayList.add(SwaramModel("D_LOW", "D_LOW", "D (LOW)", "dha"))
+        swaramModelArrayList.add(SwaramModel("P_LOW", "P_LOW", "P LOW", "pa"))
+        swaramModelArrayList.add(SwaramModel("D_LOW", "D_LOW", "D LOW", "dha"))
         swaramModelArrayList.add(SwaramModel("S", "S", "S", "sa_lower"))
         swaramModelArrayList.add(SwaramModel("R", "R", "R", "ri"))
         swaramModelArrayList.add(SwaramModel("G", "G", "G", "ga"))
         swaramModelArrayList.add(SwaramModel("P", "P", "P", "pa"))
         swaramModelArrayList.add(SwaramModel("D", "D", "D", "dha"))
-        swaramModelArrayList.add(SwaramModel("S_HIGH", "S_HIGH", "S (HIGH)", "sa_higher"))
-        swaramModelArrayList.add(SwaramModel("R_HIGH", "R_HIGH", "R (HIGH)", "ri_higher"))
-        swaramModelArrayList.add(SwaramModel("G_HIGH", "G_HIGH", "G (HIGH)", "ga_higher"))
-        swaramModelArrayList.add(SwaramModel("P_HIGH", "P_HIGH", "P (HIGH)", "pa_higher"))
+        swaramModelArrayList.add(SwaramModel("S_HIGH", "S_HIGH", "S HIGH", "sa_higher"))
+        swaramModelArrayList.add(SwaramModel("R_HIGH", "R_HIGH", "R HIGH", "ri_higher"))
+        swaramModelArrayList.add(SwaramModel("G_HIGH", "G_HIGH", "G HIGH", "ga_higher"))
+        swaramModelArrayList.add(SwaramModel("P_HIGH", "P_HIGH", "P HIGH", "pa_higher"))
 
         availableSwaramsViewModel.setList(swaramModelArrayList);
     }
@@ -67,8 +67,20 @@ class MainActivity : FragmentActivity() {
             }
         }
 
-            initializeSwaramGrid()
+        initializeSwaramGrid()
         val playButton = findViewById<Button>(R.id.playButton)
+        playButton.isEnabled = false
+        playButton.isClickable = false;
+        selectedSwaramsViewModel.selectedSwarams.observeForever({
+            val size= selectedSwaramsViewModel.getList()?.size
+            if (size != null) {
+                if( size > 0) {
+                    playButton.isEnabled = true
+                    playButton.isClickable = true;
+                }
+            }
+        })
+
         playButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 // Do some work here
