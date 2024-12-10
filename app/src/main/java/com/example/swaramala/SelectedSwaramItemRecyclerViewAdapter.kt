@@ -30,19 +30,26 @@ class SelectedSwaramItemRecyclerViewAdapter(
 
     }
 
+    fun getOnClickListener(holder: ViewHolder, position : Int): View.OnClickListener {
+        return View.OnClickListener {
+            // Remove the swaram from the list based on position.
+            onBindViewHolder(holder,position)
+            Log.d("SeletedSwaramAdapter:onClick", "Removing swaram ${position} from selected swarams list ...")
+            val selectedSwaramsViewModel = (context as MainActivity).selectedSwaramsViewModel;
+            selectedSwaramsViewModel.deleteSwaramInPosition(position);
+            Log.d("SeletedSwaramAdapter:onClick", "${selectedSwaramsViewModel.getList()}")
+            this.notifyItemRemoved(position)
+            this.notifyItemChanged(position, false);
+        }
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         //holder.idView.text = item.getId()
         holder.idView.text = "${position + 1}. "
         holder.contentView.text = item.getLabel()
-        holder.contentView.setOnClickListener(View.OnClickListener {
-            // Remove the swaram from the list based on position.
-            Log.d("SeletedSwaramAdapter:onClick","Removing swaram from selected swarams list ...")
-            val selectedSwaramsViewModel = (context as MainActivity).selectedSwaramsViewModel;
-            selectedSwaramsViewModel.deleteSwaramInPosition(position);
-            Log.d("SeletedSwaramAdapter:onClick","${selectedSwaramsViewModel.getList()}")
-            this.notifyItemRemoved(position)
-        })
+        holder.idView.setOnClickListener(getOnClickListener(holder, position))
+        holder.contentView.setOnClickListener(getOnClickListener(holder, position))
 
     }
 
