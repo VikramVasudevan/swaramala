@@ -19,7 +19,7 @@ import com.example.swaramala.placeholder.PlaceholderContent
  */
 class SelectedSwaramItemFragment : Fragment() {
     private val selectedSwaramsViewModel: SelectedSwaramsModel by activityViewModels()
-    private var columnCount = 1
+    private var columnCount = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,7 @@ class SelectedSwaramItemFragment : Fragment() {
                     // Perform an action with the latest item data.
                     Log.i("SelectedSwaramItemFragment","Data changed ${swaram}");
                     adapter = selectedSwaramsViewModel.getList()
-                        ?.let { SelectedSwaramItemRecyclerViewAdapter(it) }
+                        ?.let { SelectedSwaramItemRecyclerViewAdapter(context, it) }
 
                 })
 
