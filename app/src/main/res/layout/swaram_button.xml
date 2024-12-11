@@ -14,7 +14,7 @@
         app:cornerRadius="10dp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
-        android:background="@android:color/holo_green_light"
+        android:background="@android:color/holo_blue_light"
         android:padding="5dp"
         android:textSize="15sp"
         />
