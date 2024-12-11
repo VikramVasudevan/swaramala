@@ -44,12 +44,8 @@ class MainActivity : FragmentActivity() {
 
         availableSwaramsViewModel.setList(swaramModelArrayList);
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
+    fun readArguments(){
         val b = intent.extras;
         Log.i("MainActivity", "Extras = $b")
         if (b != null) {
@@ -66,6 +62,15 @@ class MainActivity : FragmentActivity() {
                 Log.w("MainActivity", "selectedSwaramsViewModel is null!")
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+
+        readArguments();
 
         initializeSwaramGrid()
         val playButton = findViewById<Button>(R.id.playButton)
