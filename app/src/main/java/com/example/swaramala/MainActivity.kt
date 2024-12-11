@@ -18,6 +18,7 @@ import com.example.swaramala.databinding.ActivityMainBinding
 import com.example.swaramala.ui.theme.SwaraMalaTheme
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.InputStream
 
 
 class MainActivity : FragmentActivity() {
@@ -27,23 +28,6 @@ class MainActivity : FragmentActivity() {
     val selectedSwaramsViewModel: SelectedSwaramsModel by viewModels()
     val extrapolatedSwaramPatternViewModel: ExtrapolatedSwaramPatternModel by viewModels()
 
-
-    private fun initializeSwaramGrid(){
-        val swaramModelArrayList: ArrayList<SwaramModel> = ArrayList<SwaramModel>()
-        swaramModelArrayList.add(SwaramModel("P_LOW", "P_LOW", "P LOW", "pa"))
-        swaramModelArrayList.add(SwaramModel("D_LOW", "D_LOW", "D LOW", "dha"))
-        swaramModelArrayList.add(SwaramModel("S", "S", "S", "sa_lower"))
-        swaramModelArrayList.add(SwaramModel("R", "R", "R", "ri"))
-        swaramModelArrayList.add(SwaramModel("G", "G", "G", "ga"))
-        swaramModelArrayList.add(SwaramModel("P", "P", "P", "pa"))
-        swaramModelArrayList.add(SwaramModel("D", "D", "D", "dha"))
-        swaramModelArrayList.add(SwaramModel("S_HIGH", "S_HIGH", "S HIGH", "sa_higher"))
-        swaramModelArrayList.add(SwaramModel("R_HIGH", "R_HIGH", "R HIGH", "ri_higher"))
-        swaramModelArrayList.add(SwaramModel("G_HIGH", "G_HIGH", "G HIGH", "ga_higher"))
-        swaramModelArrayList.add(SwaramModel("P_HIGH", "P_HIGH", "P HIGH", "pa_higher"))
-
-        availableSwaramsViewModel.setList(swaramModelArrayList);
-    }
 
     fun readArguments(){
         val b = intent.extras;
@@ -71,8 +55,6 @@ class MainActivity : FragmentActivity() {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
         readArguments();
-
-        initializeSwaramGrid()
         val playButton = findViewById<Button>(R.id.playButton)
         playButton.isEnabled = false
         playButton.isClickable = false;

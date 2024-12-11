@@ -1,0 +1,62 @@
+[
+  {
+    "id" :  1,
+    "name" : "Mohanam",
+    "label" : "Mohanam",
+    "swarams" : [
+      {
+        "id" : "PA_LOWER",
+        "name" : "PA_LOWER",
+        "label" : "P LOW",
+        "fileName" : "pa_lower"
+      },
+      {
+        "id" : "DA_LOWER",
+        "name" : "DA_LOWER",
+        "label" : "D LOW",
+        "fileName" : "da_lower"
+      },
+      {
+        "id" : "SA_LOWER",
+        "name" : "SA_LOWER",
+        "label" : "S",
+        "fileName" : "sa_lower"
+      },
+      {
+        "id" : "RI_LOWER",
+        "name" : "RI_LOWER",
+        "label" : "R",
+        "fileName" : "ri"
+      },
+      {
+        "id" : "GA",
+        "name" : "GA",
+        "label" : "G",
+        "fileName" : "ga"
+      }
+
+
+
+
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Hindolam",
+    "label": "Hindolam",
+    "swarams": [
+      {
+        "id": "MA_LOWER",
+        "name": "MA_LOWER",
+        "label": "M LOW",
+        "fileName": "ma1_lower"
+      },
+      {
+        "id": "DA1_LOWER",
+        "name": "DA1_LOWER",
+        "label": "D LOW",
+        "fileName": "da1_lower"
+      }
+    ]
+  }
+]
