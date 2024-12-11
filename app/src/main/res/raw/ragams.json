@@ -33,17 +33,267 @@
         "name" : "GA",
         "label" : "G",
         "fileName" : "ga"
+      },
+      {
+        "id" : "PA",
+        "name" : "PA",
+        "label" : "P",
+        "fileName" : "pa"
+      },
+      {
+        "id" : "DA",
+        "name" : "DA",
+        "label" : "D",
+        "fileName" : "dha"
+      },
+      {
+        "id" : "SA_HIGHER",
+        "name" : "SA_HIGHER",
+        "label" : "S HIGH",
+        "fileName" : "sa_higher"
+      },
+      {
+        "id" : "RI_HIGHER",
+        "name" : "RI_HIGHER",
+        "label" : "R HIGH",
+        "fileName" : "ri_higher"
+      },
+      {
+        "id" : "GA_HIGHER",
+        "name" : "GA_HIGHER",
+        "label" : "G HIGH",
+        "fileName" : "ga_higher"
+      },
+      {
+        "id" : "PA_HIGHER",
+        "name" : "PA_HIGHER",
+        "label" : "P HIGH",
+        "fileName" : "pa_higher"
       }
-
-
-
-
     ]
   },
   {
     "id": 2,
     "name": "Hindolam",
     "label": "Hindolam",
+    "swarams": [
+      {
+        "id" : "MA_LOWER",
+        "name" : "MA_LOWER",
+        "label" : "M LOW",
+        "fileName" : "ma_lower"
+      },
+      {
+        "id" : "DA_LOWER",
+        "name" : "DA_LOWER",
+        "label" : "D LOW",
+        "fileName" : "da1_lower"
+      },
+      {
+        "id" : "NI_LOWER",
+        "name" : "NI_LOWER",
+        "label" : "N LOW",
+        "fileName" : "ni1_lower"
+      },
+      {
+        "id" : "SA_LOWER",
+        "name" : "SA_LOWER",
+        "label" : "S",
+        "fileName" : "sa_lower"
+      },
+      {
+        "id" : "GA",
+        "name" : "GA",
+        "label" : "G",
+        "fileName" : "ga1"
+      },
+      {
+        "id" : "MA",
+        "name" : "MA",
+        "label" : "M",
+        "fileName" : "ma1"
+      },
+      {
+        "id" : "DA",
+        "name" : "DA",
+        "label" : "D",
+        "fileName" : "dha"
+      },
+      {
+        "id" : "NI",
+        "name" : "NI",
+        "label" : "N",
+        "fileName" : "ni1"
+      },
+      {
+        "id" : "SA_HIGHER",
+        "name" : "SA_HIGHER",
+        "label" : "S HIGH",
+        "fileName" : "sa_higher"
+      },
+      {
+        "id" : "GA_HIGHER",
+        "name" : "GA_HIGHER",
+        "label" : "G HIGH",
+        "fileName" : "ga1_higher"
+      },
+      {
+        "id" : "MA_HIGHER",
+        "name" : "MA_HIGHER",
+        "label" : "M HIGH",
+        "fileName" : "ma1_higher"
+      },
+      {
+        "id" : "DA_HIGHER",
+        "name" : "DA_HIGHER",
+        "label" : "D HIGH",
+        "fileName" : "da1_higher"
+      },
+      {
+        "id" : "NI_HIGHER",
+        "name" : "NI_HIGHER",
+        "label" : "N HIGH",
+        "fileName" : "ni1_higher"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Saveri",
+    "label": "Saveri",
+    "swarams": [
+      {
+        "id": "MA_LOWER",
+        "name": "MA_LOWER",
+        "label": "M LOW",
+        "fileName": "ma1_lower"
+      },
+      {
+        "id": "DA1_LOWER",
+        "name": "DA1_LOWER",
+        "label": "D LOW",
+        "fileName": "da1_lower"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Bilahari",
+    "label": "Bilahari",
+    "swarams": [
+      {
+        "id": "MA_LOWER",
+        "name": "MA_LOWER",
+        "label": "M LOW",
+        "fileName": "ma1_lower"
+      },
+      {
+        "id": "DA1_LOWER",
+        "name": "DA1_LOWER",
+        "label": "D LOW",
+        "fileName": "da1_lower"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Thodi",
+    "label": "Thodi",
+    "swarams": [
+      {
+        "id": "MA_LOWER",
+        "name": "MA_LOWER",
+        "label": "M LOW",
+        "fileName": "ma1_lower"
+      },
+      {
+        "id": "DA1_LOWER",
+        "name": "DA1_LOWER",
+        "label": "D LOW",
+        "fileName": "da1_lower"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Sahana",
+    "label": "Sahana",
+    "swarams": [
+      {
+        "id": "MA_LOWER",
+        "name": "MA_LOWER",
+        "label": "M LOW",
+        "fileName": "ma1_lower"
+      },
+      {
+        "id": "DA1_LOWER",
+        "name": "DA1_LOWER",
+        "label": "D LOW",
+        "fileName": "da1_lower"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Aahiri",
+    "label": "Aahiri",
+    "swarams": [
+      {
+        "id": "MA_LOWER",
+        "name": "MA_LOWER",
+        "label": "M LOW",
+        "fileName": "ma1_lower"
+      },
+      {
+        "id": "DA1_LOWER",
+        "name": "DA1_LOWER",
+        "label": "D LOW",
+        "fileName": "da1_lower"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Huseini",
+    "label": "Huseini",
+    "swarams": [
+      {
+        "id": "MA_LOWER",
+        "name": "MA_LOWER",
+        "label": "M LOW",
+        "fileName": "ma1_lower"
+      },
+      {
+        "id": "DA1_LOWER",
+        "name": "DA1_LOWER",
+        "label": "D LOW",
+        "fileName": "da1_lower"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Kalyani",
+    "label": "Kalyani",
+    "swarams": [
+      {
+        "id": "MA_LOWER",
+        "name": "MA_LOWER",
+        "label": "M LOW",
+        "fileName": "ma1_lower"
+      },
+      {
+        "id": "DA1_LOWER",
+        "name": "DA1_LOWER",
+        "label": "D LOW",
+        "fileName": "da1_lower"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Denuka",
+    "label": "Denuka",
     "swarams": [
       {
         "id": "MA_LOWER",

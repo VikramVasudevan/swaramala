@@ -3,6 +3,7 @@ package com.example.swaramala
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,7 +65,9 @@ class AvailableSwaramsFragment : Fragment() {
         dropDownRagam.adapter = adapter
         dropDownRagam.setSelection(0, true)
         val view: View = dropDownRagam.getSelectedView()
-        (view as TextView).setTextColor(Color.WHITE)
+        (view as TextView).setTextColor(Color.parseColor("#073e41"))
+        (view as TextView).setTextSize(TypedValue.COMPLEX_UNIT_SP,15F)
+        (view as TextView).setBackgroundColor(Color.parseColor("#ddf8f9"))
 
         dropDownRagam.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -74,7 +77,8 @@ class AvailableSwaramsFragment : Fragment() {
                 id: Long
             ) {
                 // Change the selected item's text color
-                (view as TextView).setTextColor(Color.WHITE)
+                (view as TextView).setBackgroundColor(Color.parseColor("#ddf8f9"))
+                (view as TextView).setTextColor(Color.parseColor("#073e41"))
                 val swarams = ragams.get(position).getSwarams() as ArrayList<SwaramModel>
                 Log.d("AvailableSwaramsFragment","Getting Swarams for ragam ${ragams.get(position)}")
                 availableSwaramsViewModel.setList(swarams)
