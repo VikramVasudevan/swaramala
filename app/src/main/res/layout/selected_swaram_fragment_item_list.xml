@@ -5,7 +5,7 @@
     android:id="@+id/list"
     android:name="com.example.swaramala.SelectedSwaramItemFragment"
     android:layout_width="350dp"
-    android:layout_height="350dp"
+    android:layout_height="300dp"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:layout_gravity="center_horizontal"
