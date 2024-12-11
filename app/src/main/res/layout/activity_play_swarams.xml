@@ -75,6 +75,26 @@
                     android:background="@drawable/transparent_bg_bordered_button"
                     />
             </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:textStyle="bold"
+                        android:layout_marginTop="14dp"
+                        android:text="PITCH :" android:labelFor="@+id/dropDownPitch"/>
+                    <Spinner
+                        android:id="@+id/dropDownPitch"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:drawable/screen_background_dark_transparent"
+                        android:spinnerMode="dropdown"/>
+                    </LinearLayout>
                 <ScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">

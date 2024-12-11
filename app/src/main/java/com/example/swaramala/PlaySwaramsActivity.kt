@@ -1,5 +1,6 @@
 package com.example.swaramala
 
+import android.R
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
@@ -9,14 +10,18 @@ import android.os.Looper
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.swaramala.databinding.ActivityPlaySwaramsBinding
+import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.concurrent.TimeUnit
+
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -185,7 +190,12 @@ class PlaySwaramsActivity : AppCompatActivity() {
 
             })
         }
+        populateDropDownPitch()
+    }
 
+    private fun populateDropDownPitch(){
+        val items = arrayOf("C", "C#", "D", "D#", "E", "F","F#", "G", "G#", "A", "A#", "B")
+        binding.dropDownPitch.adapter = ArrayAdapter(this, R.layout.simple_spinner_dropdown_item, items)
     }
 
     private fun onStopRequested() {
