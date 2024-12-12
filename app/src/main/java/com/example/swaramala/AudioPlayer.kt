@@ -20,15 +20,19 @@ class AudioPlayer {
     }
 
     fun play(c: Context?, rid: Int) {
-        stop()
+        try {
+            stop()
 
-        mMediaPlayer = MediaPlayer.create(c, rid)
-        if(mMediaPlayer != null) {
-            Log.d("AudioPlayer","Starting Play ...")
-            mMediaPlayer!!.setOnCompletionListener(OnCompletionListener { stop() })
-            mMediaPlayer!!.start()
-        } else {
-            Log.e("AudioPlayer","Mediaplayer is null")
+            mMediaPlayer = MediaPlayer.create(c, rid)
+            if (mMediaPlayer != null) {
+                Log.d("AudioPlayer", "Starting Play ...")
+                mMediaPlayer!!.setOnCompletionListener(OnCompletionListener { stop() })
+                mMediaPlayer!!.start()
+            } else {
+                Log.e("AudioPlayer", "Mediaplayer is null")
+            }
+        } catch(e : Exception) {
+            Log.w("AudioPlayer","Unable to play ...")
         }
     }
 
